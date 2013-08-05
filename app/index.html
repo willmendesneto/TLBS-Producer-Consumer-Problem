@@ -18,9 +18,9 @@
     <body>
         <div class="container">
             <p>Lista dos eventos escolhidos</p>
-            <ul class="list-events">
+            <ol class="list-events-producer">
                 <li></li>
-            </ul>
+            </ol>
         </div>
         <div class="container">
             <p>Clique nos botões para adicionar os eventos ao producer</p>
@@ -32,7 +32,10 @@
         </div>
 
         <div class="container">
-            <a href="javascript:void(0);" class="btn">Iniciar Consumer</a>
+            <p>Lista dos eventos consumidos</p>
+            <ol class="list-events-consumer">
+            </ol>
+            <a href="javascript:void(0);" class="btn" id="init-consumer">Iniciar Consumer</a>
         </div>
 
         <!--[if lt IE 7]>
@@ -54,10 +57,13 @@
         <!-- endbuild -->
         <script type="text/javascript">
             // Init Producer
-            var producer = new Producer('.add-events', '.list-events', 'item');
+            var producer = new Producer('.add-events', '.list-events-producer', 'item');
             producer.init();
             // Init Producer
-            var consumer = new Consumer(producer);
+            $('#init-consumer').on('click', function() {
+                var consumer = new Consumer(producer.getInstance());
+                consumer.processQeue();
+            });
         </script>
 </body>
 </html>

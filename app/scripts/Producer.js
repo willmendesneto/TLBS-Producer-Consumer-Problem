@@ -42,6 +42,9 @@ var Producer = function(elementListener, listEvents, classItem){
         getInstance:  function(){
             return this;
         },
+        getBufferEvents:  function(){
+            return bufferEvents;
+        },
         init: function(){
             this.appendElementInList();
             this.waitForEvent();

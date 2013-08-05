@@ -1,0 +1,64 @@
+@import url('bootstrap.css');
+
+.menu .accordion-heading {
+    position: relative;
+}
+.menu .accordion-heading .edit {
+  position: absolute;
+  top: 8px;
+  right: 30px;
+}
+.menu .area {
+    border-left: 4px solid #f38787;
+}
+.menu .equipamento {
+    border-left: 4px solid #65c465;
+}
+.menu .ponto {
+    border-left: 4px solid #98b3fa;
+
+}
+.menu .collapse.in {
+    overflow: visible;
+}
+form.navbar-form.form-search.pull-right button.btn{
+    margin-top: 0px;
+}
+
+.navbar-inner.main-menu{
+    padding: 20px 10px;
+    font-family: "OpenSansLight",Arial,sans-serif;
+}
+.container.main-content{
+    margin-top: 100px;
+}
+
+
+textarea.texteditor{
+    width: 45%;
+    min-height: 400px;
+    outline: 0;
+    background: #000;
+    border: 2px solid #FFF !important;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    margin: 5px;
+    outline: 0;
+}
+pre.code-compiled{
+    background: #FFF;
+    width: 45%;
+    min-height: 400px;
+    border: 2px solid #999 !important;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: none !important;
+}
+.left{
+    float: left;
+}
+.modal-body{
+    max-height: 500px;
+}

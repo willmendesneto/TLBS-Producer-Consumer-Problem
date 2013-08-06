@@ -54,15 +54,20 @@
         <script src="bower_components/jquery/jquery.js"></script>
         <script src="scripts/Producer.js"></script>
         <script src="scripts/Consumer.js"></script>
+        <script src="scripts/Semaphore.js"></script>
         <!-- endbuild -->
         <script type="text/javascript">
+            var semaphore = new Semaphore();
             // Init Producer
             var producer = new Producer('.add-events', '.list-events-producer', 'item');
             producer.init();
+            semaphore.currentAccess = 'Producer';
             // Init Producer
             $('#init-consumer').on('click', function() {
+                semaphore.currentAccess = 'Consumer';
                 var consumer = new Consumer(producer.getInstance());
                 consumer.processQeue();
+
             });
         </script>
 </body>

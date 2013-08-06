@@ -4,9 +4,19 @@ var Consumer = function(Producer){
     return {
         producer: Producer,
         processQeue: function(){
+            if( !semaphore.bufferEventIsAccessible() ){
+                alert('Buffer isn\'t accessible!');
+                return false;
+            }
+            //  Close access for bufferEvent
+            semaphore.accessibleBufferEvents = false;
+
             var producerInstance = this.producer.getInstance();
             this.addConsumerLogInList();
-
+            // Buffer will be accessible in 5 seconds
+            setTimeout( function() {
+                semaphore.accessibleBufferEvents = true;
+            }, 5000);
         },
         getInstance:  function(){
             return this;
@@ -17,7 +27,7 @@ var Consumer = function(Producer){
                 logText
             ;
             //  Removing oldest elements
-            $('.list-events-consumer').find('li').remove();
+            //$('.list-events-consumer').find('li').remove();
 
             var bufferEvents = producerInstance.getBufferEvents(),
                 bufferEventsLength = bufferEvents.length,

@@ -1,3 +1,14 @@
+How to
+
+O código é usado da seguinte maneira:
+
+Existe uma lista de botões que simulam os eventos para serem inseridos ao "Buffer". A lista acima corresponde à fila de processos que estão no "Buffer" em espera que que uma instância da classe "Consumer" as processe.
+
+Ao clicar no botão "Iniciar Consumer" o buffer ficará inacessível para a instância da classe "Producer".
+
+Uma instância da classe "Semaphore" está responsável por verificar o acesso ao buffer de processos. Quando uma das duas instâncias (Producer ou Consumer) for acessar o buffer, fechará para a outra e vice-versa.
+
+
 Problema do produtor-consumidor
 
 Em programas multithread muitas vezes há uma divisão de trabalho entre os segmentos. em

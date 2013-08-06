@@ -9,9 +9,16 @@ var Producer = function(elementListener, listEvents, classItem){
         waitForEvent: function (){
             var self = this.getInstance();
             $(this.$elementListener).on('click', function(){
+
+                if( !semaphore.bufferEventIsAccessible() ){
+                    alert('Buffer isn\'t accessible!');
+                    return false;
+                }
+
                 var chosenEvent = $(this).text();
                 bufferEvents.push( chosenEvent );
                 self.appendElementInList();
+
             });
         },
         appendElementInList: function(){
@@ -43,7 +50,21 @@ var Producer = function(elementListener, listEvents, classItem){
         writingEventsInList:  function(){
             var self = this.getInstance();
             $('.' + self.classItem).off('click').on('click', function(){
+
+                if( !semaphore.bufferEventIsAccessible() ){
+                    alert('Buffer isn\'t accessible!');
+                    return false;
+                }
+                //  Close access for bufferEvent
+                semaphore.accessibleBufferEvents = false;
+
                 self.removeElementInList( $(this).data('key') );
+
+                // Buffer will be accessible in 5 seconds
+                setTimeout( function() {
+                    semaphore.accessibleBufferEvents = true;
+                }, 5000);
+
             });
         },
         getInstance:  function(){

@@ -1,5 +1,7 @@
 var Producer = function(elementListener, listEvents, classItem){
-    var bufferEvents = ['click'];
+    "use strict";
+
+    var bufferEvents = ['Click'];
     return {
         $elementListener : $(elementListener),
         $listEvents : $(listEvents),
@@ -30,7 +32,12 @@ var Producer = function(elementListener, listEvents, classItem){
             this.writingEventsInList();
         },
         removeElementInList: function(item){
-            bufferEvents.splice(bufferEvents.indexOf(item), 1);
+            if( item !== undefined) {
+                bufferEvents.splice(item, 1);
+            } else if (item === undefined) {
+                bufferEvents = [];
+            }
+
             this.appendElementInList();
         },
         writingEventsInList:  function(){

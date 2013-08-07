@@ -56,13 +56,13 @@ var Producer = function(elementListener, listEvents, classItem){
                     return false;
                 }
                 //  Close access for bufferEvent
-                semaphore.accessibleBufferEvents = false;
+                semaphore.setAccessBufferEvents(false);
 
                 self.removeElementInList( $(this).data('key') );
 
                 // Buffer will be accessible in 5 seconds
                 setTimeout( function() {
-                    semaphore.accessibleBufferEvents = true;
+                    semaphore.setAccessBufferEvents(true);
                 }, 5000);
 
             });

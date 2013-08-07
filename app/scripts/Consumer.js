@@ -9,13 +9,13 @@ var Consumer = function(Producer){
                 return false;
             }
             //  Close access for bufferEvent
-            semaphore.accessibleBufferEvents = false;
+            semaphore.setAccessBufferEvents(false);
 
             var producerInstance = this.producer.getInstance();
             this.addConsumerLogInList();
             // Buffer will be accessible in 5 seconds
             setTimeout( function() {
-                semaphore.accessibleBufferEvents = true;
+                semaphore.setAccessBufferEvents(true);
             }, 5000);
         },
         getInstance:  function(){
@@ -26,8 +26,6 @@ var Consumer = function(Producer){
                 producerInstance = this.producer.getInstance(),
                 logText
             ;
-            //  Removing oldest elements
-            //$('.list-events-consumer').find('li').remove();
 
             var bufferEvents = producerInstance.getBufferEvents(),
                 bufferEventsLength = bufferEvents.length,

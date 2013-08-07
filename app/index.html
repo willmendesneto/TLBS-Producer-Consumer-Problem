@@ -17,18 +17,25 @@
     </head>
     <body>
         <div class="container">
-            <p>Lista dos eventos escolhidos</p>
-            <ol class="list-events-producer">
-                <li></li>
-            </ol>
+            <div class="span8">
+                <p>Lista dos eventos escolhidos</p>
+                <ol class="list-events-producer">
+                    <li></li>
+                </ol>
+            </div>
+            <div class="span4">
+                <p>Acessível: <span class="label">Não iniciado</span></p>
+            </div>
         </div>
         <div class="container">
             <p>Clique nos botões para adicionar os eventos ao producer</p>
-            <a href="javascript:void(0);" class="btn add-events">Click</a>
-            <a href="javascript:void(0);" class="btn add-events">Mouseenter</a>
-            <a href="javascript:void(0);" class="btn add-events">Mouseover</a>
-            <a href="javascript:void(0);" class="btn add-events">Focus</a>
-            <a href="javascript:void(0);" class="btn add-events">Unfocus</a>
+            <div class="btn-group">
+                <button class="btn add-events">Click</button>
+                <button class="btn add-events">Mouseenter</button>
+                <button class="btn add-events">Mouseover</button>
+                <button class="btn add-events">Focus</button>
+                <button class="btn add-events">Unfocus</button>
+            </div>
         </div>
 
         <div class="container">
@@ -57,7 +64,7 @@
         <script src="scripts/Semaphore.js"></script>
         <!-- endbuild -->
         <script type="text/javascript">
-            var semaphore = new Semaphore();
+            var semaphore = new Semaphore('span.label');
             // Init Producer
             var producer = new Producer('.add-events', '.list-events-producer', 'item');
             producer.init();
